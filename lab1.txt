@@ -1,0 +1,352 @@
+format compact
+% Sruthi Soorian
+% 1991
+% Section C2
+% Math 250 MATLAB Lab Assignment #1
+rand('seed', 1991)
+% Question 1(a)
+R = rand(2, 3)
+R =
+    0.2017    0.6372    0.4390
+    0.8231    0.2361    0.0873
+R = rand(2, 3)
+R =
+    0.8928    0.1825    0.5714
+    0.4666    0.9541    0.4775
+R = rand(2, 3)
+R =
+    0.5413    0.4731    0.0555
+    0.2105    0.8540    0.0881
+% Question 1(b)
+A = [1 2; 3 4; 5 6]
+A =
+     1     2
+     3     4
+     5     6
+B = [1 2 3; 4 5 6; 7 8 9]
+B =
+     1     2     3
+     4     5     6
+     7     8     9
+x = [4 3 2]
+x =
+     4     3     2
+X = [1; 2; 3]
+X =
+     1
+     2
+     3
+whos
+  Name      Size            Bytes  Class     Attributes
+
+  A         3x2                48  double              
+  B         3x3                72  double              
+  R         2x3                48  double              
+  X         3x1                24  double              
+  x         1x3                24  double              
+
+% Question 1(c)
+[size(A); size(B); size(X); size(x)]
+ans =
+     3     2
+     3     3
+     3     1
+     1     3
+S = ans
+S =
+     3     2
+     3     3
+     3     1
+     1     3
+% Question 1(d)
+a32 = A(3,2)
+a32 =
+     6
+A(3,2) = 7
+A =
+     1     2
+     3     4
+     5     7
+A(3,2) = 6
+A =
+     1     2
+     3     4
+     5     6
+% Question 1(e)
+C(:, 1) = B(:,1); C(:,2) = B(:,3)
+C =
+     1     3
+     4     6
+     7     9
+D = [B(1,:); B(3,:)]
+D =
+     1     2     3
+     7     8     9
+C, D
+C =
+     1     3
+     4     6
+     7     9
+D =
+     1     2     3
+     7     8     9
+% Question 2(a)
+% List of matrix combinations that fit together: A & B, A & C, A & X, B & C, B & X
+[A X]
+ans =
+     1     2     1
+     3     4     2
+     5     6     3
+[B C]
+ans =
+     1     2     3     1     3
+     4     5     6     4     6
+     7     8     9     7     9
+[C D]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('horzcat')" style="font-weight:bold">horzcat</a>
+Dimensions of arrays being concatenated are not consistent.} 
+[C; B]
+{Error using <a href="matlab:matlab.internal.language.introspective.errorDocCallback('vertcat')" style="font-weight:bold">vertcat</a>
+Dimensions of arrays being concatenated are not consistent.} 
+[B; D]
+ans =
+     1     2     3
+     4     5     6
+     7     8     9
+     1     2     3
+     7     8     9
+% Question 2(b)
+eye(4)
+ans =
+     1     0     0     0
+     0     1     0     0
+     0     0     1     0
+     0     0     0     1
+zeros(3)
+ans =
+     0     0     0
+     0     0     0
+     0     0     0
+zeros(3,5)
+ans =
+     0     0     0     0     0
+     0     0     0     0     0
+     0     0     0     0     0
+ones(2,3)
+ans =
+     1     1     1
+     1     1     1
+diag([4 5 6 7])
+ans =
+     4     0     0     0
+     0     5     0     0
+     0     0     6     0
+     0     0     0     7
+% Question 3 Intro
+format short
+format compact
+u = fix(10*rand(3,1)), v = fix(10*rand(3,1)), A = fix(10*rand(2,3)), B = fix(10*rand(2,3))
+u =
+     2
+     8
+     6
+v =
+     2
+     4
+     0
+A =
+     8     1     5
+     4     9     4
+B =
+     5     4     0
+     2     8     0
+% Question 3(a)
+A + B
+ans =
+    13     5     5
+     6    17     4
+B + A
+ans =
+    13     5     5
+     6    17     4
+% The two examples above illustrate the commutative law of matrix addition, A + B = B + A
+6*B
+ans =
+    30    24     0
+    12    48     0
+2*(3*B)
+ans =
+    30    24     0
+    12    48     0
+% The two examples above illustrate scalar multiplication, (st)A = s(tA)
+6*A + 15*B
+ans =
+   123    66    30
+    54   174    24
+3*(2*A + 5*B)
+ans =
+   123    66    30
+    54   174    24
+% The two examples above illustrate distributive multiplcation laws, s(A + B) = sA + sB
+3*A
+ans =
+    24     3    15
+    12    27    12
+(3*A')'
+ans =
+    24     3    15
+    12    27    12
+% The two examples above illustrate Properties of the Transpose, (A')' = A
+% Question 3(b)
+A*u + A*v
+ans =
+    74
+   148
+A*(u + v)
+ans =
+    74
+   148
+% The two examples above illustrate the property, A(u + v) = Au + Av
+(A + B) * u
+ans =
+    96
+   172
+A*u + B*u
+ans =
+    96
+   172
+% The two examples above illustrate the property, (A + B)u = Au + Bu
+A*(3*u)
+ans =
+   162
+   312
+3*A*(u)
+ans =
+   162
+   312
+% The two examples above illutrate the property, A(cu) = c(Au) = (cA)u for every scalar c
+% Question 4(a)
+A = fix(10*rand(3,4))
+A =
+     8     9     2     9
+     9     6     5     1
+     1     0     9     9
+R = A; R(1,:) = R(1,:)/R(1,1)
+R =
+    1.0000    1.1250    0.2500    1.1250
+    9.0000    6.0000    5.0000    1.0000
+    1.0000         0    9.0000    9.0000
+R(2,:) = R(2,:) - R(2,1)*R(1,:)
+R =
+    1.0000    1.1250    0.2500    1.1250
+         0   -4.1250    2.7500   -9.1250
+    1.0000         0    9.0000    9.0000
+R(3,:) = R(3,:) - R(3,1)*R(1,:)
+R =
+    1.0000    1.1250    0.2500    1.1250
+         0   -4.1250    2.7500   -9.1250
+         0   -1.1250    8.7500    7.8750
+% Question 4(b)
+R(2,:) = R(2,:)/R(2,2)
+R =
+    1.0000    1.1250    0.2500    1.1250
+         0    1.0000   -0.6667    2.2121
+         0   -1.1250    8.7500    7.8750
+R(1,:) = R(1,:) - R(1,2)*R(2,:)
+R =
+    1.0000         0    1.0000   -1.3636
+         0    1.0000   -0.6667    2.2121
+         0   -1.1250    8.7500    7.8750
+R(3,:) = R(3,:) - R(3,2)*R(2,:)
+R =
+    1.0000         0    1.0000   -1.3636
+         0    1.0000   -0.6667    2.2121
+         0         0    8.0000   10.3636
+% Question 4(c)
+R(3,:) = R(3,:)/R(3,3)
+R =
+    1.0000         0    1.0000   -1.3636
+         0    1.0000   -0.6667    2.2121
+         0         0    1.0000    1.2955
+R(1,:)= R(1,:) - R(1,3)*R(3,:)
+R =
+    1.0000         0         0   -2.6591
+         0    1.0000   -0.6667    2.2121
+         0         0    1.0000    1.2955
+R(2,:)= R(2,:) - R(2,3)*R(3,:)
+R =
+    1.0000         0         0   -2.6591
+         0    1.0000         0    3.0758
+         0         0    1.0000    1.2955
+% Question 4(d)
+rref(A)
+ans =
+    1.0000         0         0   -2.6591
+         0    1.0000         0    3.0758
+         0         0    1.0000    1.2955
+% My calculations match rref(A)
+% Question 5(a)
+a = [0.1; 0.15; 0.3]
+a =
+    0.1000
+    0.1500
+    0.3000
+m = [0.2; 0.25; 0.1]
+m =
+    0.2000
+    0.2500
+    0.1000
+s = [0.2; 0.35; 0.1]
+s =
+    0.2000
+    0.3500
+    0.1000
+C = [a, m, s]
+C =
+    0.1000    0.2000    0.2000
+    0.1500    0.2500    0.3500
+    0.3000    0.1000    0.1000
+% Question 5(b)
+x = [40; 50; 30]
+x =
+    40
+    50
+    30
+C*x
+ans =
+    20
+    29
+    20
+x - C*x
+ans =
+    20
+    21
+    10
+%Net Production value = Gross Production value - Consumption Cost value
+% $20 million/agriculture | $21 million/manufacturing | $10 million/services
+% Question 5(c)
+d = [90; 72; 96]
+d =
+    90
+    72
+    96
+% part i
+% d = (I3 - C)*x
+% part ii
+eye(3) - C
+ans =
+    0.9000   -0.2000   -0.2000
+   -0.1500    0.7500   -0.3500
+   -0.3000   -0.1000    0.9000
+[ans, d]
+ans =
+    0.9000   -0.2000   -0.2000   90.0000
+   -0.1500    0.7500   -0.3500   72.0000
+   -0.3000   -0.1000    0.9000   96.0000
+x = rref(ans)
+x =
+    1.0000         0         0  194.0000
+         0    1.0000         0  226.5000
+         0         0    1.0000  196.5000
+%This is the gross production needed to satisfy demand d:
+%194 million in agriculture, $226.5 million in manufacturing, 196.5 million in services
